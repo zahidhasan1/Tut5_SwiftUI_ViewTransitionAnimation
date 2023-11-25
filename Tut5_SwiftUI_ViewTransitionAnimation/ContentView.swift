@@ -41,7 +41,12 @@ struct ContentView: View {
                 //Scale Transition with anchor set to bottom
                     //.transition(.scale(scale: 0, anchor: .bottom))
                 
-                    .transition(.offset(x: -600, y: 0))
+                
+                //Combine 2 transition
+                    //.transition(.offset(x: -600, y: 0).combined(with: .scale))
+                
+                //Combine 3 transition
+                    .transition(.offset(x: -600, y: 0).combined(with: .scale).combined(with: .opacity))
                 
             }
         }
