@@ -46,7 +46,10 @@ struct ContentView: View {
                     //.transition(.offset(x: -600, y: 0).combined(with: .scale))
                 
                 //Combine 3 transition
-                    .transition(.offset(x: -600, y: 0).combined(with: .scale).combined(with: .opacity))
+                    //.transition(.offset(x: -600, y: 0).combined(with: .scale).combined(with: .opacity))
+                
+                //Reusable Animation
+                    .transition(.offsetScaleOpacity)
                 
             }
         }
@@ -57,5 +60,13 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+
+//ReusableAnimation
+extension AnyTransition{
+    static var offsetScaleOpacity: AnyTransition{
+        AnyTransition.offset(x: -600, y: 0).combined(with: .scale).combined(with: .opacity)
     }
 }
