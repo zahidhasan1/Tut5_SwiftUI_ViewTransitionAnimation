@@ -8,12 +8,42 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var show = false
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            RoundedRectangle(cornerRadius: 10)
+                .frame(width: 300, height: 300)
+                .foregroundColor(.green)
+                .overlay(
+                    Text("Show Details")
+                        .font(.system(.largeTitle, design: .rounded))
+                        .bold()
+                        .foregroundColor(.white)
+                )
+                .onTapGesture {
+                    withAnimation(.spring()){
+                        self.show.toggle()
+                    }
+                }
+            
+            
+            
+            if show{
+                RoundedRectangle(cornerRadius: 10)
+                    .frame(width: 300, height: 300)
+                    .foregroundColor(.purple)
+                    .overlay(
+                        Text("Well here is the details")
+                            .font(.system(.largeTitle, design: .rounded))
+                            .bold()
+                            .foregroundColor(.white)
+                    )
+                //Scale Transition with anchor set to bottom
+                    //.transition(.scale(scale: 0, anchor: .bottom))
+                
+                    .transition(.offset(x: -600, y: 0))
+                
+            }
         }
         .padding()
     }
